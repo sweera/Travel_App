@@ -26,3 +26,16 @@ function listening(){
     console.log("Server running");
     console.log(`running on localhost: ${port}`);
 }
+
+//GET request
+
+let projectData = {};
+
+app.get('/all', (req, res) =>{
+    res.send(projectData);
+})
+
+//POST ROUTE
+app.post('/addInfo', (req, res) => {
+    projectData = req.body;
+});
