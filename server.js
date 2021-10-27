@@ -29,13 +29,15 @@ function listening(){
 
 //GET request
 
-// let projectData = {};
+//let projectData = {};
 
-// app.get('/all', (req, res) =>{
-//     res.send(projectData);
-// })
+app.get('/all', (req, res) =>{
+    res.send(projectData);
+})
 
 //POST ROUTE
-// app.post('/addInfo', (req, res) => {
-//     projectData = req.body;
-// });
+app.post('/addInfo', (req, res) => {
+    projectData = req.body;
+    res.send({message: "Info received"})
+    console.log(req)
+});
