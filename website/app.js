@@ -1,11 +1,16 @@
 /* Global Variables */
-const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip";
+const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
 const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d";
 
 // Create a new date instance dynamically with JS
 const d = new Date();
 const newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
+//UI Elements
+const date = document.getElementById('date');
+const temp = document.getElementById('temp');
+const content = document.getElementById('content');
+const holder = document.getElementById('entryHolder');
 //Adding an event listener
 document.getElementById("generate").addEventListener("click", generateInfo);
 
@@ -18,12 +23,17 @@ function generateInfo(e) {
   console.log(feelings);
   if (zipcode !== "") {
     const weatherurl = baseURL + zipcode + apiKey;
-    getWeatherData(weatherurl).then(function (data) {
+    getWeatherData(weatherurl)
+    .then(function (data) {
       console.log(data);
-      postData("/addInfo", {
-        temperature: data.temperature,
-        date: newDate,
-        feelings: feelings,
+      //const temp = data.main.temp;
+      postData('/addInfo', {
+        // temperature: data.temperature,
+        // date: newDate,
+        // feelings: feelings,
+        temp,
+        feelings
+
       });
     });
   }
