@@ -31,10 +31,11 @@ function generateInfo(e) {
         // temperature: data.temperature,
         // date: newDate,
         // feelings: feelings,
+        newDate,
         temp,
         feelings
 
-      });
+      }).then(() => getprojectData("/all"))
     });
   }
 }
@@ -45,6 +46,7 @@ const getWeatherData = async (weatherurl) => {
   try {
     const data = await res.json();
     console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
