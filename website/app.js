@@ -35,7 +35,7 @@ function generateInfo(e) {
         temp,
         feelings
 
-      }).then(() => getprojectData("/all"))
+      }).then(() => getprojectData("/all")) //enter valid zipcode in text field
     });
   }
 }
