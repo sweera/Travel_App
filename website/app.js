@@ -33,9 +33,9 @@ function generateInfo(e) {
         // feelings: feelings,
         newDate,
         temp,
-        feelings
-
+        feelings,
       }).then(() => getprojectData("/all")) //enter valid zipcode in text field
+      .then(() => updateUI())
     });
   }
 }
@@ -83,3 +83,17 @@ const getprojectData = async (url) => {
 };
 
 // Update UI
+const updateUI = async () => {
+  const request = await fetch('/all')
+  try{
+    const allData = await request.json()
+    console.log(allData);
+    //document.getElementById('date').innerHTML = allData[0].date;
+    //document.getElementById('temp')
+    date.innerHTML = `<h2>Today: ${newDate}</h2>`;
+
+
+  } catch(error){
+    console.log("error",error);
+  }
+}
