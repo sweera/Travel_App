@@ -7,10 +7,10 @@ const d = new Date();
 const newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 //UI Elements
-const date = document.getElementById('date');
-const temp = document.getElementById('temp');
-const content = document.getElementById('content');
-const holder = document.getElementById('entryHolder');
+const date = document.getElementById("date");
+const temp = document.getElementById("temp");
+const content = document.getElementById("content");
+const holder = document.getElementById("entryHolder");
 //Adding an event listener
 document.getElementById("generate").addEventListener("click", generateInfo);
 
@@ -24,19 +24,19 @@ function generateInfo(e) {
   console.log(feelings);
   if (zipcode !== "") {
     const weatherurl = baseURL + zipcode + apiKey;
-    getWeatherData(weatherurl)
-    .then(function (data) {
+    getWeatherData(weatherurl).then(function (data) {
       console.log(data);
       //const temp = data.main.temp;
-      postData('/addInfo', {
+      postData("/addInfo", {
         // temperature: data.temperature,
         // date: newDate,
         // feelings: feelings,
         newDate,
         temp,
         feelings,
-      }).then(() => getprojectData("/all")) //enter valid zipcode in text field
-      .then(() => updateUI())
+      })
+        .then(() => getprojectData("/all")) //enter valid zipcode in text field
+        .then(() => updateUI());
     });
   }
 }
@@ -85,18 +85,16 @@ const getprojectData = async (url) => {
 
 // Update UI
 const updateUI = async () => {
-  const request = await fetch('/all')
-  try{
-    const allData = await request.json()
+  const request = await fetch("/all");
+  try {
+    const allData = await request.json();
     console.log(allData);
     //document.getElementById('date').innerHTML = allData[0].date;
     //document.getElementById('temp')
     date.innerHTML = `<h2>Today: ${newDate}</h2>`;
     temp.innerHTML = `<h2>${allData.temp}</h2>`;
-    content.innerHTML = `<p>${allData.feelings}</p>`
-
-
-  } catch(error){
-    console.log("error",error);
+    content.innerHTML = `<p>${allData.feelings}</p>`;
+  } catch (error) {
+    console.log("error", error);
   }
-}
+};
