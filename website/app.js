@@ -19,6 +19,7 @@ function generateInfo(e) {
   e.preventDefault();
   const zipcode = document.getElementById("zip").value;
   const feelings = document.getElementById("feelings").value;
+  console.log(newDate);
   console.log(zipcode);
   console.log(feelings);
   if (zipcode !== "") {
@@ -91,6 +92,8 @@ const updateUI = async () => {
     //document.getElementById('date').innerHTML = allData[0].date;
     //document.getElementById('temp')
     date.innerHTML = `<h2>Today: ${newDate}</h2>`;
+    temp.innerHTML = `<h2>${allData.temp}</h2>`;
+    content.innerHTML = `<p>${allData.feelings}</p>`
 
 
   } catch(error){

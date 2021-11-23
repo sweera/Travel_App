@@ -7,12 +7,12 @@ body{
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
-    height:100vh;
+    /* height:100vh; */
     background: #f23557;
     color: #f0d43a;
     justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
+    grid-gap: 0.2em;
+    font-size: 12px;
     font-family: 'Oswald', sans-serif;
 }
 
