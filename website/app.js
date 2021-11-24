@@ -8,7 +8,9 @@ const newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 //UI Elements
 const date = document.getElementById("date");
+const city = document.getElementById("city");
 const temp = document.getElementById("temp");
+const weatherholder = document.getElementById("weather");
 const content = document.getElementById("content");
 const holder = document.getElementById("entryHolder");
 //Adding an event listener
@@ -19,6 +21,7 @@ function generateInfo(e) {
   e.preventDefault();
   const zipcode = document.getElementById("zip").value;
   const feelings = document.getElementById("feelings").value;
+
   console.log(newDate);
   console.log(zipcode);
   console.log(feelings);
@@ -26,7 +29,13 @@ function generateInfo(e) {
     const weatherurl = baseURL + zipcode + apiKey;
     getWeatherData(weatherurl).then(function (data) {
       console.log(data);
-      //const temp = data.main.temp;
+      const temp = Math.round(data.main.temp - 273.15);
+      const pressure = data.main.pressure;
+      const humidity = data.main.humidity;
+      const city = data.name;
+      const max = Math.round(data.main.temp_max - 273.15);
+      const min = Math.round(data.main.temp_min - 273.15);
+      const type = data.weather.map((param) => param.main);
       postData("/addInfo", {
         // temperature: data.temperature,
         // date: newDate,
@@ -34,6 +43,13 @@ function generateInfo(e) {
         newDate,
         temp,
         feelings,
+        type,
+        pressure,
+        max,
+        min,
+        city,
+        humidity,
+        //main,
       })
         .then(() => getprojectData("/all")) //enter valid zipcode in text field
         .then(() => updateUI());
@@ -89,11 +105,11 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     console.log(allData);
-    //document.getElementById('date').innerHTML = allData[0].date;
-    //document.getElementById('temp')
-    date.innerHTML = `<h2>Today: ${newDate}</h2>`;
-    temp.innerHTML = `<h2>${allData.temp}</h2>`;
-    content.innerHTML = `<p>${allData.feelings}</p>`;
+    date.innerHTML = `<h4>Today: ${newDate}</h4>`;
+    city.innerHTML = `<h2>City is ${allData.city}</h2>`;
+    temp.innerHTML = `<p>The temperature is: ${allData.temp}°C, Maximum: ${allData.max}°C, Minimum: ${allData.min}°C</p>`;
+    weatherholder.innerHTML = `<p>The weather is: ${allData.type}, pressure is: ${allData.pressure}, humidity is: ${allData.humidity}</p>`;
+    content.innerHTML = `<p>Feelings: ${allData.feelings}</p>`;
   } catch (error) {
     console.log("error", error);
   }
