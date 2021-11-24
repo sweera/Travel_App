@@ -28,8 +28,6 @@ function listening() {
 
 //GET request
 
-//let projectData = {};
-
 app.get("/all", (req, res) => {
   res.send(projectData);
 });
