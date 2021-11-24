@@ -1,6 +1,6 @@
 /* Global Variables */
 const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
-const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d";
+const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d&units=imperial";
 
 // Create a new date instance dynamically with JS
 const d = new Date();
@@ -54,6 +54,8 @@ function generateInfo(e) {
         .then(() => getprojectData("/all")) //enter valid zipcode in text field
         .then(() => updateUI());
     });
+  } else {
+    alert("Please enter a valid zipcode!");
   }
 }
 
