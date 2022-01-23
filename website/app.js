@@ -107,7 +107,7 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     console.log(allData);
-    date.innerHTML = `<h4>Today: ${newDate}</h4>`;
+    date.innerHTML = `<h4>Date: ${newDate}</h4>`;
     city.innerHTML = `<h2>City is ${allData.city}</h2>`;
     temp.innerHTML = `<p>The temperature is: ${allData.temp}°C, Maximum: ${allData.max}°C, Minimum: ${allData.min}°C</p>`;
     weatherholder.innerHTML = `<p>The weather is: ${allData.type}, pressure is: ${allData.pressure}, humidity is: ${allData.humidity}</p>`;
