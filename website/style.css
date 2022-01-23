@@ -8,8 +8,8 @@ body {
   grid-auto-rows: minmax(150px, auto);
   /* grid-template-columns:  */
   /* height:100vh; */
-  background: #f23557;
-  color: #f0d43a;
+  background: #b37ce0;
+  color: #080808;
   justify-content: center;
   grid-gap: 0.2em;
   font-size: 14px;
@@ -50,8 +50,8 @@ input {
   display: block;
   height: 60px;
   width: 320px;
-  background: #22b2da;
-  color: #f0d43a;
+  background: #f5f7f8;
+  color: #e59999;
   font-size: 20px;
   font-family: "Oswald", sans-serif;
   border: none;
@@ -61,7 +61,7 @@ button {
   width: 400px;
   height: 100px;
   background: #3b4a6b;
-  color: #f0d43a;
+  color: #faf9f4;
   font-size: 26px;
   font-family: "Oswald", sans-serif;
   border: none;
@@ -72,8 +72,8 @@ h1 {
 }
 
 textarea {
-  background: #22b2da;
-  color: #f0d43a;
+  background: #f5f7f8;
+  color: #e59999;
   font-size: 20px;
   font-family: "Oswald", sans-serif;
 }
@@ -87,7 +87,7 @@ button:focus {
 /* Style for Placeholder Text*/
 ::placeholder {
   /* Firefox, Chrome, Opera */
-  color: #f0d43a;
+  color: #757572;
   font-family: "Oswald", sans-serif;
 }
 
