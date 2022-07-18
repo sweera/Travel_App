@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Weather-Journal App Project
 
 ## Overview
@@ -18,3 +19,6 @@ This is an asynchronous web app that uses Web API and user data to dynamically u
 
 
 
+=======
+# Travel_App
+>>>>>>> 6ecbf8b48694c387e4d7d7a00a3b63abe7ff5f15
