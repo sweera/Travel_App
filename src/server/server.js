@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(cors());
 // Initialize the main project folder
-app.use(express.static("website"));
+app.use(express.static('dist'));
 
 // Setup Server
 const port = 8000;
@@ -28,9 +28,12 @@ function listening() {
 
 //GET request
 
-app.get("/all", (req, res) => {
-  res.send(projectData);
-});
+// app.get("/all", (req, res) => {
+//   res.send(projectData);
+// });
+app.get('/', function(req,res){
+  res.sendFile('dist/index.html');
+})
 
 //POST ROUTE
 app.post("/addInfo", (req, res) => {
