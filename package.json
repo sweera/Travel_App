@@ -4,6 +4,7 @@
   "description": "## Overview This is a travel app that includes a simple form where you enter the location you are travelling to and the date of your departure. You will get the current forecast or the predicted forecast according to the date entered. ## Technologies Used <ul>   <li>HTML5/CSS3</li>   <li>JavaScript</li>   <li>Node.js</li>   <li>Express.js</li>   <li>Webpack</li>   <li>Geonames API</li>   <li>Weatherbit API</li>   <li>Pixabay API</li> </ul> ## Screenshots",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mini-css-extract-plugin": "^0.8.0",
@@ -21,11 +22,12 @@
     "css-loader": "^3.0.0",
     "html-webpack-plugin": "^4.0.0",
     "node-sass": "^4.14.0",
-    "sass-loader": "^13.0.2",
-    "style-loader": "^3.3.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
+    "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js --open"
   },
