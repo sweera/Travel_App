@@ -1,5 +1,8 @@
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
+//const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
+//const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d&units=imperial";
+//console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
 
 // Require Express to run server and routes
 const express = require("express");
@@ -28,9 +31,9 @@ function listening() {
 
 //GET request
 
-// app.get("/all", (req, res) => {
-//   res.send(projectData);
-// });
+app.get("/all", (req, res) => {
+  res.send(projectData);
+});
 app.get('/', function(req,res){
   res.sendFile('dist/index.html');
 })
