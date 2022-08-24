@@ -1,6 +1,10 @@
 /* Global Variables */
 const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
 const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d&units=imperial";
+//GeoNames URl
+//http://api.geonames.org/searchJSON?
+//full url
+//http://api.geonames.org/search?q={city}&fuzzy=0.8&maxRows=1&username=${geonamesAPIkey}
 
 // Create a new date instance dynamically with JS
 const d = new Date();
