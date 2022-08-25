@@ -6,6 +6,9 @@ const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d&units=imperial";
 //full url
 //http://api.geonames.org/search?q={city}&fuzzy=0.8&maxRows=1&username=${geonamesAPIkey}
 
+//WeatherBit Api
+//https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=API_KEY
+
 // Create a new date instance dynamically with JS
 const d = new Date();
 const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
