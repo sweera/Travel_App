@@ -40,7 +40,16 @@ function listening() {
 }
 //********************GeoNames API********************/
 projectData = {};
-
+let geonamesApiKey = process.env.GEONAMES_API_KEY;
+console.log(`${geonamesApiKey}`);
+//*********************WeatherBit API*****************/
+let weatherInfo = {}
+let weatherApiKey = process.env.WEATHERBIT_API_KEY;
+console.log(`${weatherApiKey}`);
+//*********************Pixbay API********************/
+let pixInfo = {}
+let pixbayApiKey = process.env.PIXBAY_API_KEY;
+console.log(`${pixbayApiKey}`);
 //POST ROUTE
 app.post("/addInfo", (req, res) => {
   projectData = req.body;

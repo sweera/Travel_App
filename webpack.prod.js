@@ -14,12 +14,12 @@ module.exports = {
     optimization: {
       minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
-    // output: {
-    //   libraryTarget: "var",
-    //   library: "Client",
-    //   path: path.join(__dirname, "dist"),
+    output: {
+      libraryTarget: "var",
+      library: "Client",
+       path: path.resolve(__dirname, "dist"),
     //   filename: "bundle-[hash].min.js",
-    // },
+    },
     devtool: "source-map",
     module: {
         rules: [
