@@ -1,39 +1,21 @@
 /* Global Variables */
-const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
-const apiKey = "&appid=148f4dc0f989cfb31859a09b4509866d&units=imperial";
-//GeoNames URl
-//http://api.geonames.org/searchJSON?
-//full url
-//http://api.geonames.org/search?q={city}&fuzzy=0.8&maxRows=1&username=${geonamesAPIkey}
-
-//WeatherBit Api
-//https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=API_KEY
-
-
-//PIXBAY Api
-//https://pixabay.com/api/?
-
-
-// Create a new date instance dynamically with JS
 const d = new Date();
 const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
 //UI Elements
-const date = document.getElementById("date");
-const city = document.getElementById("city");
-const temp = document.getElementById("temp");
-const weatherholder = document.getElementById("weather");
-const content = document.getElementById("content");
-const holder = document.getElementById("entryHolder");
+// const date = document.getElementById("date");
+// const city = document.getElementById("city");
+// const temp = document.getElementById("temp");
+// const weatherholder = document.getElementById("weather");
+// const content = document.getElementById("content");
+// const holder = document.getElementById("entryHolder");
 //Adding an event listener
 document.getElementById("generate").addEventListener("click", generateInfo);
 
 //Function called by event listener
-function generateInfo(e) {
+function handleSubmit(e) {
   e.preventDefault();
-  const zipcode = document.getElementById("zip").value;
-  const feelings = document.getElementById("feelings").value;
-
+  let destination = document.getElementById("destination").value;
   console.log(newDate);
   console.log(zipcode);
   console.log(feelings);
