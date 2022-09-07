@@ -1,6 +1,4 @@
 /* Global Variables */
-// const d = new Date();
-// const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
 //UI Elements
 // const date = document.getElementById("date");
@@ -9,8 +7,6 @@
 // const weatherholder = document.getElementById("weather");
 // const content = document.getElementById("content");
 // const holder = document.getElementById("entryHolder");
-//Adding an event listener
-document.getElementById("generate").addEventListener("click", generateInfo);
 
 //Function called by event listener
 function handleSubmit(e) {
@@ -39,6 +35,21 @@ function handleSubmit(e) {
     alert("Failed");
   };
 };
+//Adding an event listener
+let generate = document.getElementById("generate");
+if(generate){
+  generate.addEventListener("click", handleSubmit);
+};
+
+const findLength = () => {
+  const d = new Date();
+  const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
+  console.log(`Today is ${d}`);
+  let start = new Date(document.getElementById("departure").value);
+  let end = new Date(document.getElementById("return").value);
+  console.log(`Departure: ${start} Return: ${end}`);
+}
+
 //   console.log(newDate);
 //   console.log(zipcode);
 //   console.log(feelings);
