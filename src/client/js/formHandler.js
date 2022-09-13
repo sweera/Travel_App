@@ -48,6 +48,22 @@ const findLength = () => {
   let start = new Date(document.getElementById("departure").value);
   let end = new Date(document.getElementById("return").value);
   console.log(`Departure: ${start} Return: ${end}`);
+
+  //using getTime() function returns time in milliseconds
+  let tripPeriod = (end.getTime() - start.getTime());
+  let timeToDays = (1000 * 60 * 60 * 24);
+
+  //finding days until trip starts
+  let timeToTrip = (start.getTime() - d.getTime());
+  let daysToTrip = Math.ceil(timeToTrip / timeToDays);
+
+  let tripLength = Math.ceil(tripPeriod / timeToDays);
+
+  if(tripLength >= 0 && tripLength <= 14 && daysToTrip >= 0){
+    return `Your trip is ${tripLength} day (s)`
+  } else{
+    alert("Enter again")
+  }
 }
 
 //   console.log(newDate);
