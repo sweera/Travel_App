@@ -40,8 +40,16 @@ function listening() {
 }
 //********************GeoNames API********************/
 projectData = {};
-let geonamesApiKey = process.env.GEONAMES_API_KEY;
-console.log(`${geonamesApiKey}`);
+app.get("/apiRequest", (req, res)=>{
+  console.log('GET successful')
+  res.send(allData)
+});
+app.post("/apiRequest", async function(req, res){
+  geonamesInfo = {}
+  let geonamesApiKey = process.env.GEONAMES_API_KEY;
+  console.log(`${geonamesApiKey}`);
+
+})
 //*********************WeatherBit API*****************/
 let weatherInfo = {}
 let weatherApiKey = process.env.WEATHERBIT_API_KEY;
