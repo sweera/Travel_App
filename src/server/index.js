@@ -48,7 +48,13 @@ app.post("/apiRequest", async function(req, res){
   geonamesInfo = {}
   let geonamesApiKey = process.env.GEONAMES_API_KEY;
   console.log(`${geonamesApiKey}`);
-
+  let city = req.body.geoInfo.Destination;
+  console.log(`Destination chosen: ${city}`);
+  const geonamesURL = "http://api.geonames.org/searchJSON?";
+  const fullGeonamesURL = `${geonamesURL}q=${city}&fuzzy=0.8&maxRows=1&username=${geonamesApiKey}`;
+  console.log(fullGeonamesURL);
+  const newData = await fetch(encodeURI(fullGeonamesURL)).then(res => res.json());
+  console.log(newData);
 })
 //*********************WeatherBit API*****************/
 let weatherInfo = {}
