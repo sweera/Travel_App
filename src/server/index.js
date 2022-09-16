@@ -45,7 +45,7 @@ app.get("/apiRequest", (req, res)=>{
   res.send(allData)
 });
 app.post("/apiRequest", async function(req, res){
-  geonamesInfo = {}
+  geonamesInfo = {};
   let geonamesApiKey = process.env.GEONAMES_API_KEY;
   console.log(`${geonamesApiKey}`);
   let city = req.body.geoInfo.Destination;
@@ -55,11 +55,33 @@ app.post("/apiRequest", async function(req, res){
   console.log(fullGeonamesURL);
   const newData = await fetch(encodeURI(fullGeonamesURL)).then(res => res.json());
   console.log(newData);
+
+  let geoData = {
+    location: newData.geonames[0].cityName,
+    country: newData.geonames[0].countryName,
+    lat: newData.geonames[0].lat,
+    lng: newData.geonames[0].lng,
+  }
+  geonamesInfo = geoData;
 })
+
+
 //*********************WeatherBit API*****************/
 let weatherInfo = {}
 let weatherApiKey = process.env.WEATHERBIT_API_KEY;
 console.log(`${weatherApiKey}`);
+const weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?`;
+const fullweatherbitURL = `${weatherbitURL}lat=${geonamesInfo.lat}&lng=${geonamesInfo.lng}&key=${weatherApiKey}`;
+console.log(fullweatherbitURL);
+const weatherbitInfo = await fetch(fullweatherbitURL).then(res => res.json());
+console.log(weatherbitInfo);
+let weatherbitData = {
+  description: weatherbitInfo.data[0].weather.description,
+  high: weatherbitInfo.data[0].high_temp,
+  low: weatherbitInfo.data[0].low_temp,
+};
+weatherInfo=weatherbitData
+console.log(weatherInfo);
 //*********************Pixbay API********************/
 let pixInfo = {}
 let pixbayApiKey = process.env.PIXBAY_API_KEY;
