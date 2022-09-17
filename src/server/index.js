@@ -84,7 +84,12 @@ weatherInfo=weatherbitData
 console.log(weatherInfo);
 //*********************Pixbay API********************/
 let pixInfo = {}
-let pixbayApiKey = process.env.PIXBAY_API_KEY;
+const pixbayApiKey = process.env.PIXBAY_API_KEY;
+const pixbayURL = `https://pixabay.com/api/?`;
+const fullpixbayURL = `${pixbayURL}key=${pixbayApiKey}&q=${geonamesInfo.location}&image_type=photo`;
+console.log(fullpixbayURL);
+const pixData = await fetch(fullpixbayURL).then(res => res.json());
+console.log(pixData);
 console.log(`${pixbayApiKey}`);
 //POST ROUTE
 app.post("/addInfo", (req, res) => {
