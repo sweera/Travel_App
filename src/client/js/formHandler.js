@@ -12,12 +12,13 @@
 function handleSubmit(e) {
   e.preventDefault();
   let destination = document.getElementById("destination").value;
+  console.log(destination);
   let geoInfo = {
     "Destination": destination,
   };
   if(Client.checkValidity(destination)){
     console.log("Form Submitted");
-    const getInfo = fetch("http://localhost:8000/projectData", {
+    const getInfo = fetch("http://localhost:8000/apiRequest", {
       method: "POST",
       mode: "cors",
       credentials:"same-origin",
