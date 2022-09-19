@@ -53,17 +53,18 @@ app.post("/apiRequest", async function(req, res){
   const geonamesURL = "http://api.geonames.org/searchJSON?";
   const fullGeonamesURL = `${geonamesURL}q=${city}&fuzzy=0.8&maxRows=1&username=${geonamesApiKey}`;
   console.log(fullGeonamesURL);
-  const newData = await fetch(encodeURI(fullGeonamesURL)).then(res => res.json());
+  const newData = await fetch(encodeURI(fullGeonamesURL))
+                        .then(res => res.json());
   console.log(newData);
 
   let geoData = {
     location: newData.geonames[0].cityName,
     country: newData.geonames[0].countryName,
     lat: newData.geonames[0].lat,
-    lng: newData.geonames[0].lng,
+    long: newData.geonames[0].long,
   }
   geonamesInfo = geoData;
-})
+//})
 
 
 //*********************WeatherBit API*****************/
@@ -73,7 +74,8 @@ console.log(`${weatherApiKey}`);
 const weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?`;
 const fullweatherbitURL = `${weatherbitURL}lat=${geonamesInfo.lat}&lng=${geonamesInfo.lng}&key=${weatherApiKey}`;
 console.log(fullweatherbitURL);
-const weatherbitInfo = await fetch(fullweatherbitURL).then(res => res.json());
+const weatherbitInfo = await fetch(fullweatherbitURL)
+                            .then(res => res.json());
 console.log(weatherbitInfo);
 let weatherbitData = {
   description: weatherbitInfo.data[0].weather.description,
@@ -88,12 +90,40 @@ const pixbayApiKey = process.env.PIXBAY_API_KEY;
 const pixbayURL = `https://pixabay.com/api/?`;
 const fullpixbayURL = `${pixbayURL}key=${pixbayApiKey}&q=${geonamesInfo.location}&image_type=photo`;
 console.log(fullpixbayURL);
-const pixData = await fetch(fullpixbayURL).then(res => res.json());
+const pixData = await fetch(fullpixbayURL)
+                      .then(res => res.json());
 console.log(pixData);
 console.log(`${pixbayApiKey}`);
-//POST ROUTE
-app.post("/addInfo", (req, res) => {
-  projectData = req.body;
-  res.send({ message: "Info received" });
-  console.log(req);
+let location = geonamesInfo.location;
+let country = geonamesInfo.country;
+let lat = geonamesInfo.lat;
+let long = geonamesInfo.long;
+let description = weatherInfo.description;
+let high = weatherInfo.high;
+let low = weatherInfo.low;
+
+allData = {
+  location,
+  country,
+  lat,
+  long,
+  description,
+  high,
+  low
+};
+
+try{
+  console.log("Data:", allData);
+  res.send(allData);
+  console.log("APIs successful");
+}
+catch(error) {
+  alert("ERROR");
+}
 });
+//POST ROUTE
+// app.post("/addInfo", (req, res) => {
+//   projectData = req.body;
+//   res.send({ message: "Info received" });
+//   console.log(req);
+

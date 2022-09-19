@@ -15,7 +15,7 @@ function handleSubmit(e) {
   let geoInfo = {
     "Destination": destination,
   };
-  if(Client.checkForCity(city)){
+  if(Client.checkValidity(destination)){
     console.log("Form Submitted");
     const getInfo = fetch("http://localhost:8000/projectData", {
       method: "POST",
@@ -64,8 +64,25 @@ const findLength = () => {
   } else{
     alert("Enter again")
   }
-}
+};
 
+const updateUI = async () => {
+  const request = await fetch("http://localhost:8000/apiRequest");
+  try {
+    const allData = await request.json();
+    console.log(allData);
+    document.getElementById("coordinates").innerHTML = `Latitude: ${allData.lat} Longitude: ${allData.long}`;
+    document.getElementById("location").innerHTML = `Location: ${allData.location}, ${allData.country}`;
+    document.getElementById("lengthOfTrip").innerHTML = `${findLength()}`;
+    document.getElementById("description").innerHTML = `Forecast: ${allData.description}`;
+    document.getElementById("temperature").innerHTML = `High: ${allData.high}, Low: ${allData.low}`;
+
+  }
+  catch(error){
+    console.log("error", error);
+  }
+}
+export { handleSubmit, updateUI, findLength};
 //   console.log(newDate);
 //   console.log(zipcode);
 //   console.log(feelings);
