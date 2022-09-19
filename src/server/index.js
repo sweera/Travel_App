@@ -12,6 +12,7 @@ const app = express();
 
 //Here we are configuring express to use body-parser as middle-ware.
 const bodyParser = require("body-parser");
+const fetch = require("node-fetch");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -61,7 +62,7 @@ app.post("/apiRequest", async function(req, res){
     location: newData.geonames[0].cityName,
     country: newData.geonames[0].countryName,
     lat: newData.geonames[0].lat,
-    long: newData.geonames[0].long,
+    lng: newData.geonames[0].lng,
   }
   geonamesInfo = geoData;
 //})
@@ -97,7 +98,7 @@ console.log(`${pixbayApiKey}`);
 let location = geonamesInfo.location;
 let country = geonamesInfo.country;
 let lat = geonamesInfo.lat;
-let long = geonamesInfo.long;
+let lng = geonamesInfo.lng;
 let description = weatherInfo.description;
 let high = weatherInfo.high;
 let low = weatherInfo.low;
@@ -106,7 +107,7 @@ allData = {
   location,
   country,
   lat,
-  long,
+  lng,
   description,
   high,
   low
