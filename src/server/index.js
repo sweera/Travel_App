@@ -71,7 +71,7 @@ app.post("/apiRequest", async function(req, res){
 //*********************WeatherBit API*****************/
 let weatherInfo = {}
 let weatherApiKey = process.env.WEATHERBIT_API_KEY;
-console.log(`${weatherApiKey}`);
+//console.log(`${weatherApiKey}`);
 const weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?`;
 const fullweatherbitURL = `${weatherbitURL}lat=${geonamesInfo.lat}&lng=${geonamesInfo.lng}&key=${weatherApiKey}`;
 console.log(fullweatherbitURL);
@@ -83,7 +83,7 @@ let weatherbitData = {
   high: weatherbitInfo.data[0].high_temp,
   low: weatherbitInfo.data[0].low_temp,
 };
-weatherInfo=weatherbitData
+weatherInfo=weatherbitData;
 console.log(weatherInfo);
 //*********************Pixbay API********************/
 let pixInfo = {}
