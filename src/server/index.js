@@ -59,7 +59,7 @@ app.post("/apiRequest", async function(req, res){
   console.log(newData);
 
   let geoData = {
-    location: newData.geonames[0].cityName,
+    location: newData.geonames[0].toponymName,
     country: newData.geonames[0].countryName,
     lat: newData.geonames[0].lat,
     lng: newData.geonames[0].lng,
@@ -73,7 +73,7 @@ let weatherInfo = {}
 let weatherApiKey = process.env.WEATHERBIT_API_KEY;
 //console.log(`${weatherApiKey}`);
 const weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?`;
-const fullweatherbitURL = `${weatherbitURL}lat=${geonamesInfo.lat}&lng=${geonamesInfo.lng}&key=${weatherApiKey}`;
+const fullweatherbitURL = `${weatherbitURL}lat=${geonamesInfo.lat}&lon=${geonamesInfo.lng}&key=${weatherApiKey}`;
 console.log(fullweatherbitURL);
 const weatherbitInfo = await fetch(fullweatherbitURL)
                             .then(res => res.json());
