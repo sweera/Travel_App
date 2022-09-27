@@ -72,7 +72,7 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     console.log(allData);
-    document.getElementById("coordinates").innerHTML = `Latitude: ${allData.lat} Longitude: ${allData.lng}`;
+    document.getElementById("coordinates").innerHTML = `Latitude: ${allData.lat}, Longitude: ${allData.lng}`;
     document.getElementById("location").innerHTML = `Location: ${allData.location}, ${allData.country}`;
     document.getElementById("lengthOfTrip").innerHTML = `${findLength()}`;
     document.getElementById("description").innerHTML = `Forecast: ${allData.description}`;
