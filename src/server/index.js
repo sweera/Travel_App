@@ -95,6 +95,8 @@ const pixData = await fetch(fullpixbayURL)
                       .then(res => res.json());
 console.log(pixData);
 console.log(`${pixbayApiKey}`);
+
+//response from all APIs are combined into a single object to send to client-side
 let location = geonamesInfo.location;
 let country = geonamesInfo.country;
 let lat = geonamesInfo.lat;
@@ -102,6 +104,12 @@ let lng = geonamesInfo.lng;
 let description = weatherInfo.description;
 let high = weatherInfo.high;
 let low = weatherInfo.low;
+let picData = {}
+if(pixInfo.totalHits == 0){
+  picData = ""
+} else{
+  picData = pixInfo.hits[0].webformatURL;
+}
 
 allData = {
   location,
