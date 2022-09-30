@@ -91,9 +91,9 @@ const pixbayApiKey = process.env.PIXBAY_API_KEY;
 const pixbayURL = `https://pixabay.com/api/?`;
 const fullpixbayURL = `${pixbayURL}key=${pixbayApiKey}&q=${geonamesInfo.location}&image_type=photo`;
 console.log(fullpixbayURL);
-const pixData = await fetch(fullpixbayURL)
+const photoData = await fetch(fullpixbayURL)
                       .then(res => res.json());
-console.log(pixData);
+console.log(photoData);
 console.log(`${pixbayApiKey}`);
 
 //response from all APIs are combined into a single object to send to client-side
@@ -104,11 +104,11 @@ let lng = geonamesInfo.lng;
 let description = weatherInfo.description;
 let high = weatherInfo.high;
 let low = weatherInfo.low;
-let picData = {}
-if(pixInfo.totalHits == 0){
-  picData = ""
+let picUrl = {}
+if(photoData.totalHits == 0){
+  picUrl = "https://pixabay.com/illustrations/sign-sorry-character-figure-1719892/";
 } else{
-  picData = pixInfo.hits[0].webformatURL;
+  picUrl = photoData.hits[0].webformatURL;
 }
 
 allData = {
@@ -118,7 +118,8 @@ allData = {
   lng,
   description,
   high,
-  low
+  low,
+  picUrl
 };
 
 try{

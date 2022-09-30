@@ -77,7 +77,7 @@ const updateUI = async () => {
     document.getElementById("lengthOfTrip").innerHTML = `${findLength()}`;
     document.getElementById("description").innerHTML = `Forecast: ${allData.description}`;
     document.getElementById("temperature").innerHTML = `High: ${allData.high}, Low: ${allData.low}`;
-
+    document.getElementById("picUrl").innerHTML = `<img id = "pic" src = "${allData.picUrl}">`;
   }
   catch(error){
     console.log("error", error);
