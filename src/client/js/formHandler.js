@@ -1,13 +1,5 @@
 /* Global Variables */
 
-//UI Elements
-// const date = document.getElementById("date");
-// const city = document.getElementById("city");
-// const temp = document.getElementById("temp");
-// const weatherholder = document.getElementById("weather");
-// const content = document.getElementById("content");
-// const holder = document.getElementById("entryHolder");
-
 //Function called by event listener
 function handleSubmit(e) {
   e.preventDefault();
