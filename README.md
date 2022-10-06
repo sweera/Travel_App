@@ -13,6 +13,7 @@ This is a travel app that includes a simple form where you enter the location yo
   <li>Weatherbit API</li>
   <li>Pixabay API</li>
 </ul>
+
 ## Screenshots
 
 
