@@ -6,33 +6,33 @@ function handleSubmit(e) {
   let destination = document.getElementById("destination").value;
   console.log(destination);
   let geoInfo = {
-    "Destination": destination,
+    Destination: destination,
   };
-  if(Client.checkValidity(destination)){
+  if (Client.checkValidity(destination)) {
     console.log("Form Submitted");
     const getInfo = fetch("http://localhost:8000/apiRequest", {
       method: "POST",
       mode: "cors",
-      credentials:"same-origin",
+      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
       },
-      body: JSON.stringify({geoInfo}),
+      body: JSON.stringify({ geoInfo }),
     })
-    .then(res => res.json())
-    .then(function(res){
-      updateUI(res);
-      console.log(geoInfo)
-    });
-  } else{
+      .then((res) => res.json())
+      .then(function (res) {
+        updateUI(res);
+        console.log(geoInfo);
+      });
+  } else {
     alert("Failed");
-  };
-};
+  }
+}
 //Adding an event listener
 let generate = document.getElementById("generate");
-if(generate){
+if (generate) {
   generate.addEventListener("click", handleSubmit);
-};
+}
 
 const findLength = () => {
   const d = new Date();
@@ -43,19 +43,20 @@ const findLength = () => {
   console.log(`Departure: ${start} Return: ${end}`);
 
   //using getTime() function returns time in milliseconds
-  let tripPeriod = (end.getTime() - start.getTime());
-  let timeToDays = (1000 * 60 * 60 * 24);
+  let tripPeriod = end.getTime() - start.getTime();
+  let timeToDays = 1000 * 60 * 60 * 24;
 
   //finding days until trip starts
-  let timeToTrip = (start.getTime() - d.getTime());
+  let timeToTrip = start.getTime() - d.getTime();
   let daysToTrip = Math.ceil(timeToTrip / timeToDays);
 
   let tripLength = Math.ceil(tripPeriod / timeToDays);
 
-  if(tripLength >= 0 && tripLength <= 14 && daysToTrip >= 0){
-    return `Your trip is ${tripLength} day (s)`
-  } else{
-    alert("Enter again")
+  if (tripLength >= 0 && daysToTrip >= 0) {
+    //&& tripLength <= 14
+    return `Your trip is ${tripLength} day (s)`;
+  } else {
+    alert("Enter again");
   }
 };
 
@@ -64,18 +65,27 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     console.log(allData);
-    document.getElementById("coordinates").innerHTML = `Latitude: ${allData.lat}, Longitude: ${allData.lng}`;
-    document.getElementById("location").innerHTML = `Location: ${allData.location}, ${allData.country}`;
+    document.getElementById(
+      "coordinates"
+    ).innerHTML = `Latitude: ${allData.lat}, Longitude: ${allData.lng}`;
+    document.getElementById(
+      "location"
+    ).innerHTML = `Location: ${allData.location}, ${allData.country}`;
     document.getElementById("lengthOfTrip").innerHTML = `${findLength()}`;
-    document.getElementById("description").innerHTML = `Forecast: ${allData.description}`;
-    document.getElementById("temperature").innerHTML = `High: ${allData.high}, Low: ${allData.low}`;
-    document.getElementById("picUrl").innerHTML = `<img id = "pic" src = "${allData.picUrl}">`;
-  }
-  catch(error){
+    document.getElementById(
+      "description"
+    ).innerHTML = `Forecast: ${allData.description}`;
+    document.getElementById(
+      "temperature"
+    ).innerHTML = `High: ${allData.high}, Low: ${allData.low}`;
+    document.getElementById(
+      "picUrl"
+    ).innerHTML = `<img id = "pic" src = "${allData.picUrl}">`;
+  } catch (error) {
     console.log("error", error);
   }
-}
-export { handleSubmit, updateUI, findLength};
+};
+export { handleSubmit, updateUI, findLength };
 //   console.log(newDate);
 //   console.log(zipcode);
 //   console.log(feelings);

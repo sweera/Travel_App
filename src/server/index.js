@@ -36,9 +36,9 @@ function listening() {
   console.log(`running on localhost: ${port}`);
 }
 //Mock API Response
-app.get('/test', function(req,res){
-  res.send(mockAPIResponse)
-})
+app.get("/test", function (req, res) {
+  res.send(mockAPIResponse);
+});
 //********************GeoNames API********************/
 projectData = {};
 
