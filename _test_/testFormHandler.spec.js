@@ -1,3 +1,4 @@
+
 import { handleSubmit } from "../src/client/js/formHandler";
 import { updateUI } from "../src/client/js/formHandler";
 

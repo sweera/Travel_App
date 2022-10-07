@@ -1,5 +1,5 @@
 /* Global Variables */
-
+//let destination = document.getElementById("destination").value;
 //Function called by event listener
 function handleSubmit(e) {
   e.preventDefault();
